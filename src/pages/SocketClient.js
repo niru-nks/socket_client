@@ -94,8 +94,7 @@ class SocketClient extends Component {
             <div className="App">
 
                 <div id="message">
-                    <div className="button" style={{ float: "right" }} onClick={() => this.clear()}>clear</div>
-
+                    <div className="button" style={{ float: "right" }} onClick={() => this.clear()}>clear   <i className="fas fa-ban"></i></div>
                     Endpoint: {options.hostname ? options.hostname + ":" + options.port : "none"}<br />
                     Status:{this.state.status ? this.state.status : "none"}<br />
                     Event Name: {this.state.event} <br /><br />
@@ -104,12 +103,12 @@ class SocketClient extends Component {
                     <JSONPretty id="json-pretty" json={this.state.message}></JSONPretty>
                 </div>
                 <div className="socket-left">
-                    <div className="button" style={{ float: "right" }} onClick={() => this.connect()}>Connect</div>
-                    Enter Host Name or IP<input type="text" placeholder="Enter Host Name" onChange={(e) => { this.setState({ host: e.target.value }) }}></input><br />
-                    Enter Port<input type="text" placeholder="Enter Port" onChange={(e) => { this.setState({ port: e.target.value }) }}></input><br />
+                    <div className="button" style={{ float: "right" }} onClick={() => this.connect()}>Connect <i className="fas fa-paper-plane"></i></div>
+                    Enter Host Name or IP<input type="text"  onChange={(e) => { this.setState({ host: e.target.value }) }}></input><br />
+                    Enter Port<input type="text"  onChange={(e) => { this.setState({ port: e.target.value }) }}></input><br />
                     <hr />
-                    Submit Answer<input type="text" placeholder="enter code" onChange={(e) => { this.setState({ code: e.target.value }) }}></input>
-                    <div className="button" onClick={() => this.sendRequest()}>Submit</div>
+                    Submit Answer<input type="text"  onChange={(e) => { this.setState({ code: e.target.value }) }}></input>
+                    <div className="button" onClick={() => this.sendRequest()}>Submit <i className="fas fa-check"></i></div>
 
 
 
