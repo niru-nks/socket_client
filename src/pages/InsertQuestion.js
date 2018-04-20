@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/insertQuestions.css'
 import axios from 'axios';
 
 class InsertQuestion extends Component {
@@ -60,7 +59,7 @@ class InsertQuestion extends Component {
     }
     render() {
         return (
-            <div className="container">
+            <div className="App">
                 <div id="question-form">
                     <span id="title">Enter Question</span> <br /><br />
                     <input

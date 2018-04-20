@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import socketCluster from 'socketcluster-client';
 import axios from 'axios';
 import moment from 'moment';
-import '../css/statusInfo.css';
 
 class StatusInfo extends Component {
     constructor() {

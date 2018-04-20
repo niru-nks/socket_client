@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
+import './css/fontawesome-all.min.css';
 import Root from './Root';
 import registerServiceWorker from './registerServiceWorker';
 
