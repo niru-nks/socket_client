@@ -42,10 +42,10 @@ class InsertQuestion extends Component {
                 "gameId": 1
             }
         }
-
+        console.log("data to be set", data)
         axios({
             method: 'POST',
-            url: "http://localhost:6381/apis/v1/insertquestions/insertquestions",
+            url: "http://10.139.50.117:6382/apis/v1/insertquestions/insertquestions",
             headers: { "Content-Type": "application/json" },
             data: data
         }).then((response) => {

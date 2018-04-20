@@ -45,7 +45,7 @@ class Root extends Component {
                             <li
                                 className={this.state.heading === "Status Info" ? "liActive" : "li"}
                             >
-                                Current Status
+                                Status Info
                             </li>
                         </a>
                     </ul>
