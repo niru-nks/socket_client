@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SocketClient from './pages/SocketClient';
 import InsertQuestion from './pages/InsertQuestion';
-import StatusInfo from './pages/StatusInfo'
+import StatusInfo from './pages/StatusInfo';
+import NotFound from './pages/NotFound';
 class Root extends Component {
     constructor() {
         super();
         this.state = {
-            heading: "Current Status",
+            heading: "A Wrong Place To Be In!!",
         }
     }
     componentDidMount() {
@@ -27,21 +28,21 @@ class Root extends Component {
                         <h1 className="App-title">{this.state.heading}</h1>
                     </header>
                     <ul >
-                        <a href="/">
+                        <a href="/jioplay/socket">
                             <li
                                 className={this.state.heading === "Socket Client" ? "liActive" : "li"}
                             >
                                 Socket Client
                             </li>
                         </a>
-                        <a href="/insert">
+                        <a href="/jioplay/insert">
                             <li
                                 className={this.state.heading === "Insert Questions" ? "liActive" : "li"}
                             >
                                 Insert Questions
                             </li>
                         </a>
-                        <a href="/status">
+                        <a href="/jioplay/status">
                             <li
                                 className={this.state.heading === "Status Info" ? "liActive" : "li"}
                             >
@@ -50,18 +51,24 @@ class Root extends Component {
                         </a>
                     </ul>
                     <div className="b">
-                        <Route
-                            exact path="/"
-                            render={(props) => <SocketClient {...props} change={(val) => this.change(val)} />}
-                        />
-                        <Route
-                            path="/insert"
-                            render={(props) => <InsertQuestion {...props} change={(val) => this.change(val)} />}
-                        />
-                        <Route
-                            path="/status"
-                            render={(props) => <StatusInfo {...props} change={(val) => this.change(val)} />}
-                        />
+                        <Switch>
+                            <Route
+                                exact path="/jioplay/socket"
+                                render={(props) => <SocketClient {...props} change={(val) => this.change(val)} />}
+                            />
+                            <Route
+                                path="/jioplay/insert"
+                                render={(props) => <InsertQuestion {...props} change={(val) => this.change(val)} />}
+                            />
+                            <Route
+                                path="/jioplay/status"
+                                render={(props) => <StatusInfo {...props} change={(val) => this.change(val)} />}
+                            />
+                            <Route
+                                path="/"
+                                render={(props) => <NotFound {...props} />}
+                            />
+                        </Switch>
                     </div>
                 </div>
             </Router>

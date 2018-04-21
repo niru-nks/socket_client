@@ -16,12 +16,10 @@ class StatusInfo extends Component {
         this.props.change("Status Info");
     }
     getInfo(){
-        const date = moment(this.state.date);
-        console.log(date.format('DDMMYYYY'))
         axios({
-            method: 'GET',
-            url: "http://127.0.0.1:6382/apis/v1/redisdb/get",
-            headers: { "Content-Type": "application/json",data:"asdfasdf" },
+            method: 'POST',
+            url: "http://127.0.0.1:3001/things/",
+            headers: { "Content-Type": "application/json"},
         }).then((response) => {
             console.log(response,"asdfghjkl;")
 
@@ -33,11 +31,11 @@ class StatusInfo extends Component {
     render() {
         return (
             <div className="App">
-                <div className="container">
+                
                     Enter Date to get Info:
                     <input type="date" className = "date" onChange={(e) => this.setState({ date: e.target.value })} required></input>
-                    <input type ="button" className = "button" value="Get Game id's" onClick ={()=>this.getInfo()}></input>
-                </div>
+                    <div className = "button" onClick ={()=>this.getInfo()}>Get Game id's</div>
+                
             </div>
         );
     }
