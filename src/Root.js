@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import SocketClient from './pages/SocketClient';
 import InsertQuestion from './pages/InsertQuestion';
 import StatusInfo from './pages/StatusInfo';
@@ -28,27 +28,27 @@ class Root extends Component {
                         <h1 className="App-title">{this.state.heading}</h1>
                     </header>
                     <ul >
-                        <a href="/jioplay/socket">
+                        <Link to="/jioplay/socket">
                             <li
                                 className={this.state.heading === "Socket Client" ? "liActive" : "li"}
                             >
                                 Socket Client
                             </li>
-                        </a>
-                        <a href="/jioplay/insert">
+                        </Link>
+                        <Link to="/jioplay/insert">
                             <li
                                 className={this.state.heading === "Insert Questions" ? "liActive" : "li"}
                             >
                                 Insert Questions
                             </li>
-                        </a>
-                        <a href="/jioplay/status">
+                        </Link>
+                        <Link to="/jioplay/status">
                             <li
                                 className={this.state.heading === "Status Info" ? "liActive" : "li"}
                             >
                                 Status Info
                             </li>
-                        </a>
+                        </Link>
                     </ul>
                     <div className="b">
                         <Switch>
