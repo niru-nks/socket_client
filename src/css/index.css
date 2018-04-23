@@ -259,3 +259,13 @@ input{
   text-align: center;
   color: var(--basic-font);
 }
+
+
+select {
+  border: 2px solid var(--dark-top);
+  box-shadow: 5px 5px var(--dark-top);
+  padding: 0.5em;
+  background-color: white;
+  margin: 5px;  
+  color: var(--dark-top)
+}
