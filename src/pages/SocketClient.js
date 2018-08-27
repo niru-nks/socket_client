@@ -66,7 +66,8 @@ class SocketClient extends Component {
     sendRequest() {
         let data = {
             userId: this.state.userId,
-            question: this.state.code
+            content: this.state.code,
+            sessionId : "5b8395023a2fec0ebe60aaf8"
         }
         socket.emit('question', data);
 

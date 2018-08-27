@@ -62,7 +62,8 @@ class Expert extends Component {
     sendRequest() {
         let data = {
             userId: this.state.message.userId,
-            answer: this.state.code
+            content: this.state.code,
+            sessionId : "5b8395023a2fec0ebe60aaf8"
         }
         socket.emit('answer', data);
 
