@@ -44,14 +44,33 @@ class InsertQuestion extends Component {
         console.log("data to be set", data)
         axios({
             method: 'POST',
-            url: "http://10.139.50.117:6382/apis/v1/insertquestions/insertquestions",
+            url: "http://qa.media.jio.com/jiotayariqa/apis/v1/user/next/question", //jiotayariqaapi.jio.ril.com
+            // url: "http://jiotayariqaapi.jio.ril.com/apis/v2/common/home/list",
             headers: { "Content-Type": "application/json" },
-            data: data
+            data: {
+                "sessionId": "5b2242cda7f34213238123a1",
+                "userId": "5b0678d9a1ea174a0b7dd4d8",
+                "quizId": "20",
+                "timeLeft": "30",
+                "questionObj": {
+
+                    "startQuestion": 5,
+                    "batchSize": 10
+                },
+                "ansObj": [{
+                    "questionId": 232,
+                    "questionNo": 1,
+                    "section": "Verbal",
+                    "selectedAns": "930",
+                    "seeLater": false
+                }]
+
+            }
         }).then((response) => {
-            console.log(response,"asdfghjkl;")
+            console.log(response, "asdfghjkl;")
 
         }).catch((err) => {
-            console.log(err,"err")
+            console.log(err, "err")
         })
 
 
@@ -109,7 +128,7 @@ class InsertQuestion extends Component {
                         placeholder="gameId"
                         onChange={(e) => { this.setState({ gameId: e.target.value }) }}
                     ></input>
-                    <div 
+                    <div
                         className="submit-button"
                         onClick={() => this.insert()}
                     >

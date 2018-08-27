@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import SocketClient from './pages/SocketClient';
 import InsertQuestion from './pages/InsertQuestion';
 import StatusInfo from './pages/StatusInfo';
+import Expert from './pages/Expert';
 import NotFound from './pages/NotFound';
 class Root extends Component {
     constructor() {
@@ -35,6 +36,13 @@ class Root extends Component {
                                 Socket Client
                             </li>
                         </Link>
+                        <Link to="/jioplay/expert">
+                            <li
+                                className={this.state.heading === "Expert" ? "liActive" : "li"}
+                            >
+                                Expert
+                            </li>
+                        </Link>
                         <Link to="/jioplay/insert">
                             <li
                                 className={this.state.heading === "Insert Questions" ? "liActive" : "li"}
@@ -55,6 +63,10 @@ class Root extends Component {
                             <Route
                                 exact path="/jioplay/socket"
                                 render={(props) => <SocketClient {...props} change={(val) => this.change(val)} />}
+                            />
+                            <Route
+                                exact path="/jioplay/expert"
+                                render={(props) => <Expert {...props} change={(val) => this.change(val)} />}
                             />
                             <Route
                                 path="/jioplay/insert"

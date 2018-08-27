@@ -8,16 +8,17 @@ var options = {
 };
 var socket;
 var qId;
-class SocketClient extends Component {
+class Expert extends Component {
     constructor() {
         super();
         this.state = {
             event: "",
-            message: {}
+            message: {},
+            display:[]
         }
     }
     componentDidMount() {
-        this.props.change("Socket Client");
+        this.props.change("Expert");
 
     }
     clear() {
@@ -43,47 +44,38 @@ class SocketClient extends Component {
 
         console.log(socket)
         socket.on('connect', () => {
-            
+
             this.setState({
                 status: "Connected!!"
             })
-            socket.emit('userConnect', {
-                userId: this.state.userId
+            socket.emit('expertConnect', {
+                message: "Blaah"
             })
         })
-        socket.on("answer", (data) => {
+        socket.on("question", (data) => {
             this.setState({ message: data })
         })
-        socket.on('toSubscribe', (data) => {
-            console.log("subscribe channel", data);
-        })
-        socket.on('message', (data) => {
-            console.log(data, "All messages received")
-        })
+
 
     }
 
     sendRequest() {
         let data = {
-            userId: this.state.userId,
-            question: this.state.code
+            userId: this.state.message.userId,
+            answer: this.state.code
         }
-        socket.emit('question', data);
+        socket.emit('answer', data);
 
 
     }
-    one() {
-        socket.emit('one', "one");
-    }
-    two() {
-        socket.emit('two', 'two');
-    }
-
     render() {
         return (
             <div className="App">
 
                 <div id="message">
+                    {/* {
+                        this.state.display
+                    } */}
                     <div className="button" style={{ float: "right" }} onClick={() => this.clear()}>clear   <i className="fas fa-ban"></i></div>
                     <b>Endpoint: </b>{options.hostname ? options.hostname + ":" + options.port : "None"}<br />
                     <b>Status: </b>{this.state.status
@@ -108,19 +100,14 @@ class SocketClient extends Component {
                     <div className="button" style={{ float: "right" }} onClick={() => this.connect()}>Connect <i className="fas fa-paper-plane"></i></div>
                     <b>Enter Host Name or IP</b><input type="text" name="hostname" onChange={(e) => { this.setState({ host: e.target.value }) }}></input><br />
                     <b>Enter Port</b><input type="text" onChange={(e) => { this.setState({ port: e.target.value }) }}></input><br />
-                    <b>Enter UserId</b><input type="text" name="userId" onChange={(e) => { this.setState({ userId: e.target.value }) }}></input><br />
+                    {/* <b>Enter UserId</b><input type="text" name="userId" onChange={(e) => { this.setState({ userId: e.target.value }) }}></input><br /> */}
                     <hr />
-                    <b>Submit Question</b><input type="text" onChange={(e) => { this.setState({ code: e.target.value }) }}></input>
+                    <b>Submit Answer</b><input type="text" onChange={(e) => { this.setState({ code: e.target.value }) }}></input>
                     <div className="button" onClick={() => this.sendRequest()}>Submit <i className="fas fa-check"></i></div>
-
-
-                    <br /><br /><br />
-                    <div className="button" onClick={() => this.one()}>One</div>
-                    <div className="button" onClick={() => this.two()}>Two</div>
                 </div>
             </div>
         );
     }
 }
 
-export default SocketClient;
+export default Expert;
