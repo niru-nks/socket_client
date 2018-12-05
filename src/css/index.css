@@ -33,6 +33,22 @@ outline: 1px solid var(--basic-font);
   background-color: var(--dark-top)
 }
 
+.message-box::-webkit-scrollbar {
+  width: 1em;
+}
+
+.message-box::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 4px 2px 6px var(--dark-top);
+}
+
+.message-box::-webkit-scrollbar-thumb {
+background-color: var(--basic-font);
+outline: 1px solid var(--basic-font);
+
+}
+.message-box::-webkit-scrollbar-corner {
+  background-color: var(--dark-top)
+}
 
 
 html {
@@ -286,3 +302,42 @@ select {
   margin: 5px;  
   color: var(--dark-top)
 }
+/**
+* Start of message box css
+*/
+
+.message-box {
+  border: 1px solid black;
+  height: 80%;
+  overflow: scroll;
+}
+
+.user-message-box{
+  background: white;
+  padding: 0.3em;
+  margin:5px;
+  width: 80%;
+  float: left;
+  border-radius: 8px;
+}
+
+.expert-message-box{
+  background: grey;
+  color: white;
+  padding: 0.3em;
+  margin:5px;
+  width: 80%;
+  float: right;
+  border-radius: 8px;
+}
+
+.message-title {
+  margin:5px;
+  font-size: 20px;
+  padding: 0.3em;
+  background-color: var(--menu-color);
+  text-transform: uppercase;
+}
+/**
+* End of message box css
+*/

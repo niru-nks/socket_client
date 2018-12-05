@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import socketCluster from 'socketcluster-client';
+// import socketCluster from 'socketcluster-client';
 import io from 'socket.io-client'
 import JSONPretty from 'react-json-pretty';
 var options = {
@@ -7,7 +7,19 @@ var options = {
     port: ""
 };
 var socket;
-var qId;
+// let soc = new WebSocket('ws://stocks.mnet.website')
+// // soc.onopen(()=>{
+
+// // })
+// soc.onerror = (dat) => {
+//     console.log("this is on error")
+//     console.log(dat)
+// }
+// soc.onmessage = (data) => {
+//     console.log("this is on message")
+//     console.log(data, "---")
+// }
+// var qId;
 class SocketClient extends Component {
     constructor() {
         super();
@@ -43,7 +55,7 @@ class SocketClient extends Component {
 
         console.log(socket)
         socket.on('connect', () => {
-            
+            console.log("connected-------->>")
             this.setState({
                 status: "Connected!!"
             })
@@ -51,12 +63,16 @@ class SocketClient extends Component {
                 userId: this.state.userId
             })
         })
-        socket.on("answer", (data) => {
+        socket.on("10.50.236.247", (data) => {
             this.setState({ message: data })
         })
-        socket.on('toSubscribe', (data) => {
-            console.log("subscribe channel", data);
+        socket.on("answer", (data) => {
+
+            this.setState({ message: data })
         })
+        // socket.on('toSubscribe', (data) => {
+        //     console.log("subscribe channel", data);
+        // })
         socket.on('message', (data) => {
             console.log(data, "All messages received")
         })
@@ -67,7 +83,7 @@ class SocketClient extends Component {
         let data = {
             userId: this.state.userId,
             content: this.state.code,
-            sessionId : "5b8395023a2fec0ebe60aaf8"
+            sessionId: "5b90f2f8cf594026799cb1f8"
         }
         socket.emit('question', data);
 
