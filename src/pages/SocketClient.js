@@ -66,6 +66,9 @@ class SocketClient extends Component {
         socket.on("10.50.236.247", (data) => {
             this.setState({ message: data })
         })
+        socket.on("unknownUpdate", (data) => {
+            this.setState({ message: data })
+        })
         socket.on("answer", (data) => {
 
             this.setState({ message: data })
